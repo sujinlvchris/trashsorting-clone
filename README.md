@@ -2,6 +2,12 @@
 
 Static single-page clone of `https://trashsorting.vercel.app/`.
 
+Public URL:
+
+```text
+https://sujinlvchris.github.io/trashsorting-clone/
+```
+
 Run it locally:
 
 ```bash
