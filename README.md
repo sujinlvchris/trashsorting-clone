@@ -5,7 +5,7 @@ Static single-page clone of `https://trashsorting.vercel.app/`.
 Public URL:
 
 ```text
-https://trashsorting-clone.vercel.app/
+https://bingo-sorter.vercel.app/
 ```
 
 Run it locally:
