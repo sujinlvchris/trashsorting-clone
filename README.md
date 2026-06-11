@@ -5,7 +5,7 @@ Static single-page clone of `https://trashsorting.vercel.app/`.
 Public URL:
 
 ```text
-https://sujinlvchris.github.io/trashsorting-clone/
+https://trashsorting-clone.vercel.app/
 ```
 
 Run it locally:
