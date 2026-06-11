@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Thailand Waste Sorter</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="hero">
+        <h1>Thailand Waste Sorter</h1>
+        <p class="subtitle">Upload a photo of your waste for sorting advice</p>
+        <img
+          class="bins-logo"
+          src="./assets/bins-logo.png"
+          alt="Thailand four-bin waste sorting set"
+          width="880"
+          height="340"
+        />
+      </header>
+
+      <section class="upload-card" aria-label="Waste photo upload">
+        <label class="upload-zone" id="uploadZone" for="fileInput">
+          <span class="camera-mark" aria-hidden="true"></span>
+          <span class="upload-title">Click or drag a photo here</span>
+          <span class="upload-note">JPG, PNG, WebP supported</span>
+        </label>
+        <input id="fileInput" type="file" accept="image/jpeg,image/png,image/webp" />
+
+        <div class="preview-box" id="previewBox" aria-live="polite">
+          <img id="previewImg" alt="Selected waste preview" />
+          <div class="file-meta" id="fileMeta"></div>
+        </div>
+
+        <button class="primary-btn" id="submitBtn" type="button" disabled>
+          Identify &amp; Sort
+        </button>
+        <p class="error-msg" id="errorMsg" role="alert"></p>
+      </section>
+
+      <section class="loading" id="loading" aria-live="polite" aria-hidden="true">
+        <div class="spinner" aria-hidden="true"></div>
+        <p>Analysing image...</p>
+      </section>
+
+      <section class="result-card" id="resultCard" aria-live="polite">
+        <h2>Classification Result</h2>
+        <div id="resultContent"></div>
+      </section>
+
+      <footer>
+        Based on the
+        <a
+          href="https://greener.bangkok.go.th/en/waste-recycle/community-waste-guide/"
+          target="_blank"
+          rel="noreferrer"
+        >Thailand 4-bin waste sorting standard</a>
+        · For reference only
+      </footer>
+    </main>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
