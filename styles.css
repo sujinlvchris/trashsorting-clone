@@ -402,6 +402,31 @@ input {
   padding-left: 22px;
 }
 
+.category-sub {
+  margin-top: 4px !important;
+  color: #6a7780 !important;
+  font-size: 0.92rem;
+}
+
+.official-note a {
+  display: inline-block;
+  margin-top: 8px;
+  color: #42995b;
+  font-weight: 700;
+  text-underline-offset: 3px;
+}
+
+.manual-check {
+  margin: 14px 0 0;
+  padding: 10px 12px;
+  border: 1px solid rgba(229, 185, 40, 0.45);
+  border-radius: var(--radius);
+  background: rgba(255, 247, 214, 0.82);
+  color: #6e5b12;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
 .confidence-row {
   display: grid;
   grid-template-columns: 1fr auto;
