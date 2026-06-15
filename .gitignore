@@ -1,5 +1,6 @@
 .vercel
 .venv-ml/
+.tools/
 data-sources/
 test-results/
 models/

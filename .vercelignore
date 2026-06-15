@@ -1,0 +1,9 @@
+.git/
+.tools/
+.venv-ml/
+.vercel/
+data-sources/
+models/
+test-results/
+__pycache__/
+*.pyc
