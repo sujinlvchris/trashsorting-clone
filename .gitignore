@@ -1,1 +1,9 @@
 .vercel
+.venv-ml/
+data-sources/
+test-results/
+models/
+__pycache__/
+*.pyc
+models/**/*.joblib
+models/**/*.npz

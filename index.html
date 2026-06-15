@@ -3,14 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Thailand Waste Sorter</title>
+    <title>BinGo Thai Waste Sorter</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <main class="page-shell">
       <header class="hero">
-        <h1>Thailand Waste Sorter</h1>
-        <p class="subtitle">Upload a photo of your waste for sorting advice</p>
+        <h1>BinGo Thai Waste Sorter</h1>
+        <p class="subtitle">Upload a photo or scan live for Thailand waste sorting advice</p>
         <img
           class="bins-logo"
           src="./assets/bins-logo.png"
@@ -20,7 +20,16 @@
         />
       </header>
 
-      <section class="upload-card" aria-label="Waste photo upload">
+      <nav class="mode-tabs" aria-label="Input mode">
+        <button class="mode-tab is-active" id="uploadModeBtn" type="button" aria-pressed="true">
+          Upload photo
+        </button>
+        <button class="mode-tab" id="cameraModeBtn" type="button" aria-pressed="false">
+          Live camera
+        </button>
+      </nav>
+
+      <section class="upload-card mode-panel is-active" id="uploadPanel" aria-label="Waste photo upload">
         <label class="upload-zone" id="uploadZone" for="fileInput">
           <span class="camera-mark" aria-hidden="true"></span>
           <span class="upload-title">Click or drag a photo here</span>
@@ -37,6 +46,34 @@
           Identify &amp; Sort
         </button>
         <p class="error-msg" id="errorMsg" role="alert"></p>
+      </section>
+
+      <section class="camera-card mode-panel" id="cameraPanel" aria-label="Live camera waste scan" hidden>
+        <div class="camera-shell">
+          <video id="cameraVideo" autoplay muted playsinline></video>
+          <canvas id="cameraCanvas" hidden></canvas>
+          <div class="scan-frame" aria-hidden="true"></div>
+          <div class="camera-empty" id="cameraEmpty">Camera is off</div>
+        </div>
+
+        <div class="camera-controls" aria-label="Camera controls">
+          <button class="primary-btn compact-btn" id="startCameraBtn" type="button">
+            Start camera
+          </button>
+          <button class="secondary-btn compact-btn" id="classifyNowBtn" type="button" disabled>
+            Classify now
+          </button>
+          <button class="secondary-btn compact-btn" id="switchCameraBtn" type="button" disabled>
+            Switch camera
+          </button>
+          <button class="secondary-btn compact-btn" id="stopCameraBtn" type="button" disabled>
+            Stop camera
+          </button>
+        </div>
+
+        <p class="camera-status" id="cameraStatus" aria-live="polite">
+          Point the item inside the frame, then start the camera.
+        </p>
       </section>
 
       <section class="loading" id="loading" aria-live="polite" aria-hidden="true">

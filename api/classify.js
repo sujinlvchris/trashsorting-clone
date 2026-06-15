@@ -1,4 +1,5 @@
-const { classifyWaste } = require("./lib/thaiWasteClassifier");
+const { classifyWasteWithHuggingFace } = require("./lib/huggingFaceWasteClassifier");
+const { classifyWasteWithOpenAI } = require("./lib/openaiWasteClassifier");
 
 module.exports = async function handler(req, res) {
   setCors(res);
@@ -15,7 +16,7 @@ module.exports = async function handler(req, res) {
 
   try {
     const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body;
-    const result = classifyWaste(body);
+    const result = await classifyWaste(body);
     res.status(200).json(result);
   } catch (error) {
     res.status(error.statusCode || 500).json({
@@ -24,6 +25,29 @@ module.exports = async function handler(req, res) {
     });
   }
 };
+
+async function classifyWaste(body) {
+  const provider = String(
+    process.env.WASTE_CLASSIFIER_PROVIDER || process.env.CLASSIFIER_PROVIDER || "huggingface-space"
+  )
+    .trim()
+    .toLowerCase();
+
+  if (provider === "openai") {
+    return classifyWasteWithOpenAI(body);
+  }
+
+  if (provider === "auto") {
+    try {
+      return await classifyWasteWithHuggingFace(body);
+    } catch (error) {
+      if (!process.env.OPENAI_API_KEY) throw error;
+      return classifyWasteWithOpenAI(body);
+    }
+  }
+
+  return classifyWasteWithHuggingFace(body);
+}
 
 function setCors(res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
